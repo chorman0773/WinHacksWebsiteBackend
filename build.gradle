@@ -10,7 +10,7 @@
 // Apply the java plugin to add support for Java
 plugins{
     id 'java'
-    id 'application'
+    id "com.bmuschko.tomcat" version "2.5"
 }
 
 archivesBaseName = 'winhacks-web'
@@ -28,9 +28,12 @@ repositories {
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
-    // The production code uses the SLF4J logging API at compile time
-    compile 'org.slf4j:slf4j-api:1.7.25'
+    def tomcatVersion = '9.0.29'
 
-    
+    // https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api
+    compile group: 'org.apache.tomcat', name: 'tomcat-servlet-api', version: tomcatVersion
+    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: tomcatVersion
+
 }
 
